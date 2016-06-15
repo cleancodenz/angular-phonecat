@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" ng-app="phonecatApp_1" ng-controller="PhoneListCtrl_1">
+
+<head>
+  <meta charset="utf-8">
+  <title ng-bind-template="Google Phone Gallery: {{query}}">Google Phone Gallery</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="js/controller_1.js"></script>
+
+</head>
+
+<body>
+  <p>Hello, {{name}}!</p>
+  <p>Total number of phones: {{phones.length}}</p>
+  <p>Current query: {{query}}</p>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <!--Side bar content-->
+        Search: <input ng-model="query"/>
+      </div>
+      <div class="col-md-2">
+        <!--Side bar content-->
+        Sort by: 
+        <select ng-model="orderProp">
+          <option value="name">Alphabetical</option>
+          <option value="age">Newest</option>
+          <option value="-age">Oldest</option>
+        </select>
+        <p> selected order is {{orderProp}}</p>
+      </div>
+      
+      <div class="col-md-8">
+        <!--Body content-->
+        <ul>
+          <li ng-repeat="phone in phones | filter:query | orderBy:orderProp">
+            <span>{{phone.name}}</span>
+            <p>
+              {{phone.snippet}}
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  
+  <table>
+    <tr>
+      <th>row number</th>
+    </tr>
+    <tr ng-repeat="i in [0,1,2,3,4,5,6,7]">
+      <td>{{i}}</td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <th>row number</th>
+    </tr>
+    <tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]">
+      <td>{{i+1}}</td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <th ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]">col number {{i}}</th>
+    </tr>
+    <tr ng-repeat="j in [0, 1, 2, 3, 4, 5, 6, 7]">
+      <td ng-repeat="k in [0, 1, 2, 3, 4, 5, 6, 7]">Row {{j}} col {{k}}</td>
+    </tr>
+  </table>
+
+</body>
+
+</html>

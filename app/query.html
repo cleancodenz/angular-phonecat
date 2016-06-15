@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" ng-app="phonecatApp_Query">
+
+<head>
+  <meta charset="utf-8">
+  <title>Google Phone Gallery</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="js/controller_query.js"></script>
+</head>
+
+<body ng-controller="PhoneListCtrl_Query">
+  <div>
+    <label>Search: <input ng-model="searchText"></label>
+    <table id="searchTextResults">
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+      </tr>
+      <tr ng-repeat="friend in friends |filter:searchText">
+        <td>{{friend.name}}</td>
+        <td>{{friend.phone}}</td>
+      </tr>
+    </table>
+    <hr/>
+    <label>Any: <input ng-model="search.$"></label> <br/>
+    <label>Name only: <input ng-model="search.name"></label> <br/>
+    <label>Phone only: <input ng-model="search.phone"></label> <br/>
+    <label>Equality <input type="checkbox" ng-model="strict"></label> <br/>
+       <table id="searchObjResults">
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+      </tr>
+      <tr ng-repeat="friendObj in friends |filter:search:strict">
+        <td>{{friendObj.name}}</td>
+        <td>{{friendObj.phone}}</td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>
